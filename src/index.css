@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================
+   1. CORE LAYOUT RESET (Edge-to-Edge)
+===================================== */
+:root {
+  --blue-main: #3b82f6;
+  --pink-main: #ec4899;
+  --studio-gray: #f8f9fa;
+}
+
+html, body, #root {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* =====================================
+   2. ANIMATED MESH BACKGROUND (DO NOT TOUCH)
+===================================== */
+.mesh-bg {
+  background-color: #ffffff;
+  background-image: 
+    radial-gradient(at 0% 0%, rgb(40, 122, 255) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgb(255, 27, 141) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgb(116, 204, 255) 0px, transparent 50%);
+  background-size: 150% 150%;
+  animation: meshFlow 10s ease infinite alternate;
+}
+
+@keyframes meshFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+/* =====================================
+   3. STUDIO WORKSPACE CLASSES
+===================================== */
+.studio-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar-transition {
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}
+
+/* =====================================
+   4. COMPONENT STYLES
+===================================== */
+.white-input-box {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.white-input-box:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+}
+
+.user-bubble {
+  background: linear-gradient(135deg, var(--blue-main), #2563eb);
+  color: white;
+  border-radius: 22px 22px 4px 22px;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+  animation: popIn 0.3s ease-out;
+}
+
+.ai-bubble {
+  background: white;
+  color: #1e293b;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 22px 22px 22px 4px;
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* =====================================
+   5. BUTTONS & UTILITIES
+===================================== */
+.btn-send {
+  background: linear-gradient(135deg, #3b82f6, #ec4899);
+  color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.btn-send:hover {
+  transform: scale(1.1);
+}
+
+.btn-mode-build {
+  background: linear-gradient(135deg, #3b82f6, #ec4899);
+  color: white;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+  transition: all 0.3s ease;
+  border-radius: 20%;
+}
+
+.btn-mode-build:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  display: block;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2); /* Thoda dark kiya taaki light bg pe dikhe */
+  border-radius: 10px;
+}
